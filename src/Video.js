@@ -3,7 +3,15 @@ import "./Video.css";
 import VideoFooter from "./VideoFooter";
 import VideoSidebar from "./VideoSidebar";
 
-const Video = ({ videoLink }) => {
+const Video = ({
+  url,
+  channel,
+  description,
+  song,
+  likes,
+  messages,
+  shares,
+}) => {
   const [playing, setPlaying] = useState(false);
   const videoRef = useRef(null);
 
@@ -21,13 +29,13 @@ const Video = ({ videoLink }) => {
     <div className="video">
       <video
         className="video__player"
-        src={videoLink}
+        src={url}
         ref={videoRef}
         onClick={handleVideoPress}
         loop
       />
-      <VideoFooter />
-      <VideoSidebar />
+      <VideoFooter channel={channel} description={description} />
+      <VideoSidebar likes={likes} messages={messages} shares={shares} />
     </div>
   );
 };
